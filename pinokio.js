@@ -2,10 +2,15 @@ const path = require('path')
 module.exports = {
   version: "3.2",
   title: "alltalk-tts",
-  description: "",
-  icon: "icon.html; charset=utf-8",
+  description: "[Windows NVIDIA ONLY] AllTalk-TTS is a unified UI for E5-TTS, XTTS, ParlerTTS and RVC, based on CoquiTTS, including a finetune mode.",
+  icon: "icon.png",
+  pre: [{
+    title: "espeak-ng",
+    description: "Espeak-ng for multiple TTS engines to function.",
+    href: "espeak-ng-x86.msi"
+  }],
   menu: async (kernel, info) => {
-    let installed = info.exists("app/env")
+    let installed = info.exists("app/conda_env")
     let running = {
       install: info.running("install.js"),
       start: info.running("start.js"),
@@ -24,10 +29,14 @@ module.exports = {
         let local = info.local("start.js")
         if (local && local.url) {
           return [{
+            icon: "fa-solid fa-rocket",
+            text: "Open TTS Engine",
+            href: local.url,
+          },{
             default: true,
             icon: "fa-solid fa-rocket",
             text: "Open Web UI",
-            href: local.url,
+            href: "http://127.0.0.1:7851/static/tts_generator/tts_generator.html",
           }, {
             icon: 'fa-solid fa-terminal',
             text: "Terminal",

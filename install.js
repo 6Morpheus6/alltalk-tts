@@ -1,6 +1,5 @@
 module.exports = {
   run: [
-    // Edit this step to customize the git repository to use
     {
       method: "shell.run",
       params: {
@@ -9,27 +8,42 @@ module.exports = {
         ]
       }
     },
-    // Delete this step if your project does not use torch
+    {
+      method: "shell.run",
+      params: {
+      conda: {
+        path: "conda_env",
+        python: "python=3.11.9"
+        },
+        path: "app",
+        message: [
+          "conda install -y -c conda-forge git",
+          "conda install -y conda-forge::ffmpeg=*=*gpl*",
+          "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps"
+        ]
+      }
+    },
     {
       method: "script.start",
       params: {
         uri: "torch.js",
         params: {
-          venv: "env",                // Edit this to customize the venv folder path
-          path: "app",                // Edit this to customize the path to start the shell from
-          // xformers: true   // uncomment this line if your project requires xformers
+          conda: "conda_env",
+          path: "app",
         }
       }
     },
-    // Edit this step with your custom install commands
     {
       method: "shell.run",
       params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        path: "app",                // Edit this to customize the path to start the shell from
+        conda: "conda_env",
+        path: "app",
         message: [
-          "uv pip install gradio devicetorch",
-          "uv pip install -r requirements.txt"
+          "uv pip install faiss-cpu",
+          "uv pip install -r ./system/requirements/requirements_standalone.txt",
+          "uv pip install -U gradio==4.32.2",
+          "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl",
+          "uv pip install -r ./system/requirements/requirements_parler.txt"
         ]
       }
     },
