@@ -4,20 +4,15 @@ module.exports = {
     {
       method: "shell.run",
       params: {
-        conda: "conda_env",                // Edit this to customize the venv folder path
-        env: { },                   // Edit this to customize environment variables (see documentation)
-        path: "app",                // Edit this to customize the path to start the shell from
+        conda: "conda_env",
+        env: { },
+        path: "app",
         message: [
-          "python script.py",    // Edit with your custom commands
+          "python script.py",
         ],
-        on: [{
-          // The regular expression pattern to monitor.
-          // When this pattern occurs in the shell terminal, the shell will return,
-          // and the script will go onto the next step.
-          "event": "/http:\/\/\\S+/",   
-
-          // "done": true will move to the next step while keeping the shell alive.
-          // "kill": true will move to the next step after killing the shell.
+        on: [
+          {
+          "event": "/http:\\/\\/127\\.0\\.0\\.1:\\d+\\?__theme=[a-zA-Z0-9]+/",
           "done": true
         }]
       }
