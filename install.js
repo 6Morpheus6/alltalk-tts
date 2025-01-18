@@ -18,6 +18,7 @@ module.exports = {
         path: "app",
         message: [
           "conda install -y -c conda-forge git",
+          "conda install -y -c conda-forge git-lfs",
           "conda install -y conda-forge::ffmpeg=*=*gpl*",
           "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps"
         ]
@@ -36,12 +37,15 @@ module.exports = {
     {
       method: "shell.run",
       params: {
+        env: {
+          "GIT_LFS_SKIP_SMUDGE": "1"
+        },
         conda: "conda_env",
         path: "app",
         message: [
           "uv pip install faiss-cpu",
           "uv pip install -r ./system/requirements/requirements_standalone.txt",
-          "uv pip install -U gradio==4.32.2",
+          "uv pip install -U gradio==4.32.2 fastapi==0.112.2",
           "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl",
           "uv pip install -r ./system/requirements/requirements_parler.txt"
         ]
