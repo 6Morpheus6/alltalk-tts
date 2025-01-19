@@ -9,6 +9,42 @@ module.exports = {
       }
     },
     {
+      when: "{{which('apt')}}",
+      method: "shell.run",
+      params: {
+        sudo: true,
+        message: "apt install libaio-dev espeak-ng"
+      },
+        next: "all"
+    },
+    {
+      when: "{{which('yum')}}",
+      method: "shell.run",
+      params: {
+        sudo: true,
+        message: "yum install libaio-devel espeak-ng"
+      },
+        next: "all"
+    },
+    {
+      when: "{{which('brew')}}",
+      method: "shell.run",
+      params: {
+        sudo: true,
+        message: "brew install espeak-ng"
+      },
+        next: "all"
+    },
+    {
+      when: "{{which('winget')}}",
+      method: "shell.run",
+      params: {
+        message: "winget install --id=eSpeak-NG.eSpeak-NG  -e"
+      },
+        next: "all"
+    },
+    {
+      id: "all",
       method: "shell.run",
       params: {
       conda: {
@@ -19,12 +55,53 @@ module.exports = {
         message: [
           "conda install -y -c conda-forge git",
           "conda install -y -c conda-forge git-lfs",
-          "conda install -y conda-forge::ffmpeg=*=*gpl*",
-          "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps"
+          "conda install -y conda-forge::ffmpeg=*=*gpl*"
         ]
       }
     },
     {
+      when: "{{platform === 'win32'}}",
+      method: "shell.run",
+      params: {
+        conda: "conda_env",
+        path: "app",
+        message: [
+          "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
+          "mkdir .\\models\\xtts"
+        ]
+      },
+        next: "torch"
+    },
+    {
+      when: "{{platform === 'linux'}}",
+      method: "shell.run",
+      params: {
+        conda: "conda_env",
+        path: "app",
+        message: [
+          "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
+          "conda install -c conda-forge cxx-compiler",
+          "conda install -c conda-forge gcc",
+          "mkdir -p ./models/xtts"
+        ]
+      },
+        next: "torch"
+    },
+    {
+      when: "{{platform === 'darwin'}}",
+      method: "shell.run",
+      params: {
+        conda: "conda_env",
+        path: "app",
+        message: [
+          "conda install -c conda-forge gcc",
+          "mkdir -p ./models/xtts"
+        ]
+      },
+        next: "torch"
+    },
+    {
+      id: "torch",
       method: "script.start",
       params: {
         uri: "torch.js",
@@ -46,8 +123,18 @@ module.exports = {
           "uv pip install faiss-cpu",
           "uv pip install -r ./system/requirements/requirements_standalone.txt",
           "uv pip install -U gradio==4.32.2 fastapi==0.112.2",
-          "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl",
+          "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl; platform_system == 'Windows'",
+          "uv pip install deepspeed; platform_system == 'Linux'",
           "uv pip install -r ./system/requirements/requirements_parler.txt"
+        ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        path: "app/models/xtts",
+        message: [
+          "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3",
         ]
       }
     },
