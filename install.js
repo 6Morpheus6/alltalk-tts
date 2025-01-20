@@ -36,6 +36,7 @@ module.exports = {
         next: "all"
     },
     {
+      when: "{{which('winget')}}",
       method: "shell.run",
       params: {
         sudo: true,
@@ -98,8 +99,7 @@ module.exports = {
           "conda install -c conda-forge gcc",
           "mkdir -p ./models/xtts"
         ]
-      },
-        next: "torch"
+      }
     },
     {
       id: "torch",
