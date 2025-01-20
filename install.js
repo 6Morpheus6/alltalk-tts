@@ -36,12 +36,11 @@ module.exports = {
         next: "all"
     },
     {
-      when: "{{which('winget')}}",
       method: "shell.run",
       params: {
-        message: "winget install --id=eSpeak-NG.eSpeak-NG  -e"
-      },
-        next: "all"
+        sudo: true,
+        message: "winget install --id=eSpeak-NG.eSpeak-NG -e --silent --accept-source-agreements --accept-package-agreements"
+      }
     },
     {
       id: "all",
@@ -67,7 +66,8 @@ module.exports = {
         path: "app",
         message: [
           "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
-          "mkdir .\\models\\xtts"
+          "mkdir .\\models\\xtts",
+          "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl"
         ]
       },
         next: "torch"
@@ -82,7 +82,8 @@ module.exports = {
           "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
           "conda install -c conda-forge cxx-compiler",
           "conda install -c conda-forge gcc",
-          "mkdir -p ./models/xtts"
+          "mkdir -p ./models/xtts",
+          "uv pip install deepspeed",
         ]
       },
         next: "torch"
@@ -123,8 +124,6 @@ module.exports = {
           "uv pip install faiss-cpu",
           "uv pip install -r ./system/requirements/requirements_standalone.txt",
           "uv pip install -U gradio==4.32.2 fastapi==0.112.2",
-          "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl; platform_system == 'Windows'",
-          "uv pip install deepspeed; platform_system == 'Linux'",
           "uv pip install -r ./system/requirements/requirements_parler.txt"
         ]
       }
@@ -136,12 +135,6 @@ module.exports = {
         message: [
           "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3",
         ]
-      }
-    },
-    {
-      method: "fs.link",
-      params: {
-        venv: "app/env"
       }
     }
   ]
