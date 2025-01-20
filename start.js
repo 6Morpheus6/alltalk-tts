@@ -8,7 +8,7 @@ module.exports = {
         env: { },
         path: "app",
         message: [
-          "python script.py --tts_model piper",
+          "echo %PATH% && python script.py --tts_model piper"
         ],
         on: [
           {

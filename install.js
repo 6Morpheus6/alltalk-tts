@@ -4,7 +4,7 @@ module.exports = {
       method: "shell.run",
       params: {
         message: [
-          "git clone -b alltalkbeta https://github.com/6Morpheus6/alltalk_tts app",
+          "git clone -b alltalkbeta https://github.com/6Morpheus6/alltalk_tts app"
         ]
       }
     },
@@ -84,7 +84,7 @@ module.exports = {
           "conda install -c conda-forge cxx-compiler",
           "conda install -c conda-forge gcc",
           "mkdir -p ./models/xtts",
-          "uv pip install deepspeed",
+          "uv pip install deepspeed"
         ]
       },
         next: "torch"
@@ -108,7 +108,7 @@ module.exports = {
         uri: "torch.js",
         params: {
           conda: "conda_env",
-          path: "app",
+          path: "app"
         }
       }
     },
@@ -133,7 +133,17 @@ module.exports = {
       params: {
         path: "app/models/xtts",
         message: [
-          "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3",
+          "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3"
+        ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        conda: "conda_env",
+        path: "app",
+        message: [
+          "echo %PATH%"
         ]
       }
     }
