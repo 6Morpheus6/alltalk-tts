@@ -4,7 +4,7 @@ module.exports = {
       method: "shell.run",
       params: {
         message: [
-          "git clone -b alltalkbeta https://github.com/erew123/alltalk_tts app",
+          "git clone -b alltalkbeta https://github.com/6Morpheus6/alltalk_tts app",
         ]
       }
     },
