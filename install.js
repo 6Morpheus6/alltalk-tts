@@ -136,16 +136,6 @@ module.exports = {
           "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3"
         ]
       }
-    },
-    {
-      method: "shell.run",
-      params: {
-        conda: "conda_env",
-        path: "app",
-        message: [
-          "echo %PATH%"
-        ]
-      }
     }
   ]
 }
