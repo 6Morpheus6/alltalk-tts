@@ -53,7 +53,6 @@ module.exports = {
         },
         path: "app",
         message: [
-          "conda install -y -c conda-forge git",
           "conda install -y -c conda-forge git-lfs",
           "conda install -y conda-forge::ffmpeg=*=*gpl*"
         ]
@@ -135,6 +134,12 @@ module.exports = {
         message: [
           "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3"
         ]
+      }
+    },
+    {
+      method: "notify",
+      params: {
+        html: "Installation finished! Click the 'start' tab to get started."
       }
     }
   ]
