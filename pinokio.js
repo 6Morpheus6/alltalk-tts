@@ -25,13 +25,13 @@ module.exports = {
         let local = info.local("start.js")
         if (local && local.url) {
           return [{
+            default: true,
             icon: "fa-solid fa-rocket",
             text: "Open TTS Engine",
             href: local.url,
           },{
-            default: true,
-            icon: "fa-solid fa-rocket",
-            text: "Open Web UI",
+            icon: "fa-solid fa-bolt",
+            text: "TTS Generator (bulk)",
             href: "http://127.0.0.1:7851/static/tts_generator/tts_generator.html",
           }, {
             icon: 'fa-solid fa-terminal',
@@ -90,6 +90,11 @@ module.exports = {
           icon: "fa-solid fa-dumbbell",
           text: "Train",
           href: "train.js",
+        }, {
+          icon: "fa-solid fa-book",
+          text: "Docs & Support",
+          href: "https://github.com/erew123/alltalk_tts/wiki#-quick-start-user-guide---getting-started-101",
+          popout: true
         }, {
           icon: "fa-solid fa-plug",
           text: "Update",
