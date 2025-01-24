@@ -30,7 +30,6 @@ module.exports = {
       when: "{{which('brew')}}",
       method: "shell.run",
       params: {
-        sudo: true,
         message: "brew install espeak-ng"
       },
         next: "all"
