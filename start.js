@@ -14,6 +14,9 @@ module.exports = {
           {
           "event": "/http:\\/\\/127\\.0\\.0\\.1:\\d+\\?__theme=[a-zA-Z0-9]+/",
           "done": true
+        },{
+          "event": "/error/i",
+          "break": false
         }]
       }
     },
