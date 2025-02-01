@@ -78,7 +78,7 @@ module.exports = {
         conda: "conda_env",
         path: "app",
         message: [
-          "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
+          "conda install -y -c conda-forge ffmpeg",
           "conda install -y -c conda-forge cxx-compiler",
           "conda install -y -c conda-forge gcc",
           "mkdir -p ./models/xtts",
