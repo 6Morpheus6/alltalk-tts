@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   version: "3.3",
   title: "AllTalk-TTS v2",
-  description: "[Windows NVIDIA ONLY] AllTalk-TTS is a unified UI for E5-TTS, XTTS, Vite TTS, Piper TTS, Parler TTS and RVC, based on CoquiTTS, including a finetune mode.",
+  description: "[NVIDIA ONLY] AllTalk-TTS is a unified UI for E5-TTS, XTTS, Vite TTS, Piper TTS, Parler TTS and RVC, based on CoquiTTS, including a finetune mode.",
   icon: "icon.png",
   menu: async (kernel, info) => {
     let installed = info.exists("app/conda_env")
