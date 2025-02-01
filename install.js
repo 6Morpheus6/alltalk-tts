@@ -79,8 +79,8 @@ module.exports = {
         path: "app",
         message: [
           "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
-          "conda install -c conda-forge cxx-compiler",
-          "conda install -c conda-forge gcc",
+          "conda install -y -c conda-forge cxx-compiler",
+          "conda install -y -c conda-forge gcc",
           "mkdir -p ./models/xtts",
           "uv pip install deepspeed"
         ]
@@ -94,7 +94,7 @@ module.exports = {
         conda: "conda_env",
         path: "app",
         message: [
-          "conda install -c conda-forge gcc",
+          "conda install -y -c conda-forge gcc",
           "mkdir -p ./models/xtts"
         ]
       }
