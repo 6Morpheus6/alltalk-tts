@@ -127,12 +127,12 @@ module.exports = {
       }
     },
     {
-      method: "shell.run",
+      method: "hf.download",
       params: {
         path: "app/models/xtts",
-        message: [
-          "git clone https://huggingface.co/coqui/XTTS-v2 xttsv2_2.0.3"
-        ]
+        "_": [ "coqui/XTTS-v2" ],
+        "local-dir": "xttsv2_2.0.3",
+        "exclude": [ "*.wav", "samples", "*.md", "*.txt" ] 
       }
     },
     {
