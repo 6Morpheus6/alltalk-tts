@@ -131,8 +131,8 @@ module.exports = {
       params: {
         path: "app/models/xtts",
         "_": [ "coqui/XTTS-v2" ],
+        "exclude": '"*.wav" "samples" "*.md" "*.txt"',
         "local-dir": "xttsv2_2.0.3",
-        "exclude": [ "*.wav", "samples", "*.md", "*.txt" ] 
       }
     },
     {
