@@ -37,7 +37,12 @@ module.exports = {
             icon: 'fa-solid fa-terminal',
             text: "Terminal",
             href: "start.js",
-          }]
+          }, {
+          icon: "fa-solid fa-book",
+          text: "Docs & Support",
+          href: "https://github.com/erew123/alltalk_tts/wiki#-quick-start-user-guide---getting-started-101",
+          popout: true
+        }]
         } else {
           return [{
             default: true,
@@ -58,7 +63,12 @@ module.exports = {
             icon: 'fa-solid fa-terminal',
             text: "Terminal",
             href: "train.js",
-          }]
+          }, {
+          icon: "fa-solid fa-book",
+          text: "Docs & Support",
+          href: "https://github.com/erew123/alltalk_tts/wiki#-quick-start-user-guide---getting-started-101",
+          popout: true
+        }]
         } else {
           return [{
             default: true,
