@@ -7,7 +7,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu121"
+        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu121"
       }
     },
     // windows amd
@@ -27,7 +27,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 numpy==1.26.4"
+        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 numpy==1.26.4"
       }
     },
     // mac
@@ -37,7 +37,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1"
+        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1"
       }
     },
     // linux nvidia
@@ -47,7 +47,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu121"
+        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu121"
       }
     },
     // linux rocm (amd)
@@ -57,7 +57,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/rocm6.0"
+        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/rocm5.7"
       }
     },
     // linux cpu
@@ -67,7 +67,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cpu"
+        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cpu"
       }
     }
   ]
