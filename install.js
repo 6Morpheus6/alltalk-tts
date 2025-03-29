@@ -121,7 +121,7 @@ module.exports = {
         message: [
           "uv pip install faiss-cpu",
           "uv pip install -r ./system/requirements/requirements_standalone.txt",
-          "uv pip install -U gradio==4.32.2 fastapi==0.112.2",
+          "uv pip install -U gradio==4.32.2 fastapi==0.112.2 pydantic==2.10.6",
           "uv pip install -r ./system/requirements/requirements_parler.txt"
         ]
       }
