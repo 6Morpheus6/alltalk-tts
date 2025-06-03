@@ -5,7 +5,7 @@ module.exports = {
       "when": "{{gpu === 'nvidia' && kernel.gpu_model && / 50.+/.test(kernel.gpu_model) }}",
       "method": "shell.run",
       "params": {
-        "conda": "{{args && args.venv ? args.venv : null}}",
+        "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
         "message": "uv pip install torch torchvision torchaudio {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128"
       },
