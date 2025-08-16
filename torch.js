@@ -2,23 +2,12 @@ module.exports = {
   run: [
     // nvidia 50 series (windows)
     {
-      "when": "{{gpu === 'nvidia' && kernel.gpu_model && / 50.+/.test(kernel.gpu_model) }}",
-      "method": "shell.run",
-      "params": {
-        "conda": "{{args && args.conda ? args.conda : null}}",
-        "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch torchvision torchaudio {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128"
-      },
-      "next": null
-    },
-    // windows nvidia
-    {
       "when": "{{platform === 'win32' && gpu === 'nvidia'}}",
       "method": "shell.run",
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu121"
+        "message": "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128"
       }
     },
     // windows amd
@@ -58,7 +47,7 @@ module.exports = {
       "params": {
         "conda": "{{args && args.conda ? args.conda : null}}",
         "path": "{{args && args.path ? args.path : '.'}}",
-        "message": "uv pip install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu121"
+        "message": "uv pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 {{args && args.xformers ? 'xformers' : ''}} --index-url https://download.pytorch.org/whl/cu128"
       }
     },
     // linux rocm (amd)
