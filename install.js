@@ -66,7 +66,7 @@ module.exports = {
         message: [
           "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
           "mkdir .\\models\\xtts",
-          "uv pip install https://github.com/erew123/alltalk_tts/releases/download/DeepSpeed-14.0/deepspeed-0.14.0+ce78a63-cp311-cp311-win_amd64.whl"
+          "uv pip install https://github.com/6Morpheus6/deepspeed-windows-wheels/releases/download/v0.17.5/deepspeed-0.17.5+e1560d84-cp311-cp311-win_amd64.whl"
         ]
       },
         next: "torch"
