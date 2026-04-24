@@ -1,4 +1,7 @@
 module.exports = {
+  requires: {
+    bundle: "ai",
+  },
   run: [
     {
       method: "shell.run",
@@ -6,6 +9,12 @@ module.exports = {
         message: [
           "git clone -b alltalkbeta https://github.com/6Morpheus6/alltalk_tts app"
         ]
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: "conda update -y -c conda-forge huggingface_hub"
       }
     },
     {
@@ -81,8 +90,7 @@ module.exports = {
           "conda install -y -c conda-forge ffmpeg",
           "conda install -y -c conda-forge cxx-compiler",
           "conda install -y -c conda-forge gcc",
-          "mkdir -p ./models/xtts",
-          "uv pip install deepspeed"
+          "mkdir -p ./models/xtts"
         ]
       },
         next: "torch"
@@ -127,12 +135,10 @@ module.exports = {
       }
     },
     {
-      method: "hf.download",
+      method: "shell.run",
       params: {
         path: "app/models/xtts",
-        "_": [ "coqui/XTTS-v2" ],
-        "exclude": '"*.wav" "samples" "*.md" "*.txt"',
-        "local-dir": "xttsv2_2.0.3",
+        message: 'hf download coqui/XTTS-v2 --exclude "*.wav" --exclude "*.md" --exclude "*.txt" --exclude "samples" --local-dir xttsv2_2.0.3 && dir'
       }
     },
     {

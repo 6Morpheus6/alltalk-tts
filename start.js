@@ -1,4 +1,7 @@
 module.exports = {
+  requires: {
+    bundle: "ai",
+  },
   daemon: true,
   run: [
     {
@@ -10,13 +13,9 @@ module.exports = {
         message: [
           "python script.py --tts_model piper"
         ],
-        on: [
-          {
+        on: [{
           "event": "/http:\\/\\/127\\.0\\.0\\.1:\\d+\\?__theme=[a-zA-Z0-9]+/",
           "done": true
-        },{
-          "event": "/error/i",
-          "break": false
         }]
       }
     },
