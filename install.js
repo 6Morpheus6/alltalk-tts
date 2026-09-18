@@ -4,17 +4,12 @@ module.exports = {
   },
   run: [
     {
+      when: "{{!exists('app')}}",
       method: "shell.run",
       params: {
         message: [
           "git clone -b alltalkbeta https://github.com/6Morpheus6/alltalk_tts app"
         ]
-      }
-    },
-    {
-      method: "shell.run",
-      params: {
-        message: "conda update -y -c conda-forge huggingface_hub"
       }
     },
     {
@@ -67,7 +62,7 @@ module.exports = {
       }
     },
     {
-      when: "{{platform === 'win32'}}",
+      when: "{{platform === 'win32' && gpu === 'nvidia'}}",
       method: "shell.run",
       params: {
         conda: "conda_env",
@@ -75,7 +70,7 @@ module.exports = {
         message: [
           "conda install -y -c conda-forge 'ffmpeg=*=h*_*' --no-deps",
           "mkdir .\\models\\xtts",
-          "uv pip install https://github.com/6Morpheus6/deepspeed-windows-wheels/releases/download/v0.17.5/deepspeed-0.17.5+e1560d84-2.7torch+cu128-cp311-cp311-win_amd64.whl"
+          "uv pip install https://github.com/6Morpheus6/deepspeed-windows-wheels/releases/download/v0.17.5/deepspeed-0.17.5+e1560d84-2.7torch_cu128-cp311-cp311-win_amd64.whl"
         ]
       },
         next: "torch"
